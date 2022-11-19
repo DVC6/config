@@ -22,7 +22,7 @@ services:
         aliases:
           - mysql_host
   java:
-    image: gabrieldasilvadev/device-java:1.0.0
+    image: gabrieldasilvadev/device-java:1.0.1
     container_name: device-java
     restart: always
     tty: true

@@ -1,0 +1,49 @@
+services:
+  db:
+    image: mysql:5.7
+    container_name: device-mysql
+    restart: always
+    tty: true
+    working_dir: /mysql_device
+    environment:
+      MYSQL_USER: 'device'
+      MYSQL_ROOT_PASSWORD: 'urubu100'
+      MYSQL_PASSWORD: 'urubu100'
+      MYSQL_DATABASE: 'device'
+    ports:
+      - '3306:3306'
+        # command: bash -c 'apt update && apt install wget && wget https://github.com/DVC6/config/blob/ac1bd4a138cca88ce42bc8a7cdfaa46fb894f258/create-tables.sql && cp ./create-tables.sql ./scripts/sql/'
+    volumes:
+      - /var/opt/mssql
+      - ./schemas:/var/lib/mysql:rw
+      - ./scripts/sql:/docker-entrypoint-initdb.d/
+    networks:
+      mysql_network:
+        aliases:
+          - mysql_host
+  java:
+    image: gabrieldasilvadev/device-java:1.0.0
+    container_name: device-java
+    restart: always
+    tty: true
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    entrypoint: ['java', '-jar', 'devices-1.0-SNAPSHOT-jar-with-dependencies.jar']
+    networks:
+      java_network:
+        aliases:
+          - java_host
+ 
+
+volumes:
+  schemas: {}
+
+networks:
+  mysql_network:
+    name: mysql_net
+    driver: bridge
+  java_network:
+    name: java_net
+    driver: bridge

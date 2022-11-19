@@ -10,7 +10,7 @@ clear
 
 echo Executando o script de instalacao do banco...
 # Executa docker compose para subir o banco de dados com as tabelas
-docker compose up --build -d
+sudo docker-compose up --build -d
 
 echo Script finalizado com sucesso!
 sleep 1s
@@ -18,9 +18,11 @@ echo Limpando o terminal...
 sleep $wait_time
 clear
 
-cp ./create-tables.sql ./scripts/sql/
+sudo mkdir scripts
+sudo mkdir ./scripts/sql
+sudo cp ./create-tables.sql ./scripts/sql/
 
 # Executa a service java para iniciar a aplicacao
 echo Iniciando a aplicacao...
 sleep 1s
-docker compose run java
+sudo docker-compose run java

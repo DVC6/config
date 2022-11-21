@@ -1,2 +1,0 @@
-wget https://raw.githubusercontent.com/DVC6/config/main/create-tables.sql
-wget https://raw.githubusercontent.com/DVC6/config/main/docker-compose.yml

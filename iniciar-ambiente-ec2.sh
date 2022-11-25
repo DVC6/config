@@ -10,7 +10,6 @@ clear
 
 echo Executando o script de instalacao do banco...
 # Executa docker compose para subir o banco de dados com as tabelas
-sudo docker-compose up --build -d
 
 echo Script finalizado com sucesso!
 sleep 1s

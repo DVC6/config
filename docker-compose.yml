@@ -18,7 +18,7 @@ services:
     networks:
       - main_network
   java:
-    image: gabrieldasilvadev/device-java:2.3.0
+    image: gabrieldasilvadev/device-java:2.3.1
     container_name: device-java
     restart: always
     tty: true

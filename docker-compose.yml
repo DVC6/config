@@ -6,7 +6,7 @@ services:
     tty: true
     working_dir: /mysql_device
     environment:
-      MYSQL_USER: 'device_user'
+      MYSQL_USER: 'root'
       MYSQL_ROOT_PASSWORD: 'urubu100'
       MYSQL_PASSWORD: 'urubu100'
       MYSQL_DATABASE: 'device'
@@ -19,7 +19,7 @@ services:
     networks:
       - main_network
   java:
-    image: gabrieldasilvadev/device-java:2.0.0
+    image: gabrieldasilvadev/device-java:2.1.6
     container_name: device-java
     restart: always
     tty: true
